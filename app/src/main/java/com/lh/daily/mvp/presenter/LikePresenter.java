@@ -35,13 +35,12 @@ public class LikePresenter implements LikeContract.Presenter {
                     @Override
                     public void subscribe(ObservableEmitter<List<ZhihuDailyDetail>> e) throws Exception {
                         SQLiteDatabase database = DatabaseHelper.getInstance().getReadableDatabase();
-                        Cursor cursor = database.rawQuery("select * from favorite where type == ?", new String[]{"1"});
+                        Cursor cursor = database.rawQuery("select * from like where type == ?", new String[]{"1"});
                         Gson gson = new Gson();
                         List<ZhihuDailyDetail> stories = new ArrayList<>();
                         while (cursor.moveToNext()) {
                             String str = cursor.getString(cursor.getColumnIndex("content"));
                             ZhihuDailyDetail story = gson.fromJson(str, ZhihuDailyDetail.class);
-                            cursor.moveToNext();
                             stories.add(story);
                         }
                         cursor.close();

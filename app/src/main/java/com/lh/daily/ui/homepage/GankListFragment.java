@@ -42,13 +42,13 @@ public class GankListFragment extends BaseFragment<ListLayoutBinding> implements
 
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
-        mCurrentPage = 0;
+        mCurrentPage = 1;
         mPresenter = new GankListPresenter();
         mDataBinding.swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         mDataBinding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mCurrentPage = 0;
+                mCurrentPage = 1;
                 mPresenter.refreshData(mCurrentPage);
             }
         });
@@ -98,7 +98,7 @@ public class GankListFragment extends BaseFragment<ListLayoutBinding> implements
 
     @Override
     public void refreshData(List<Gank.Result> results) {
-        mCurrentPage = 0;
+        mCurrentPage = 1;
         mAdapter.clear(false);
         mAdapter.addGankResults(results);
         mAdapter.notifyDataSetChanged();

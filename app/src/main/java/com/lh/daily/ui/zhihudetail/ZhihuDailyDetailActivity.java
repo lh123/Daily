@@ -35,7 +35,7 @@ public class ZhihuDailyDetailActivity extends BaseActivity{
             Fragment fragment = ZhihuDailyDetailFragment.newInstance(id);
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container,fragment,ZhihuDailyDetailFragment.TAG)
+                    .replace(R.id.fragment_container,fragment,ZhihuDailyDetailFragment.class.getName())
                     .commit();
         }
     }

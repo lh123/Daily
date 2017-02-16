@@ -63,8 +63,8 @@ public class ZhihuDailyDetailPresenter implements ZhihuDailyDetailContract.Prese
                     public void subscribe(ObservableEmitter<Object> e) throws Exception {
                         SQLiteDatabase database = DatabaseHelper.getInstance().getWritableDatabase();
                         String str = new Gson().toJson(mDailyDetail);
-                        database.execSQL("insert into favorite (content_id,type,time,content) values (?,?,?,?)",
-                                new String[]{mDailyDetail.getId() + "", "1", System.currentTimeMillis() + "", str});
+                        database.execSQL("insert into like (content_id,title,type,time,content) values (?,?,?,?,?)",
+                                new String[]{mDailyDetail.getId() + "",mDailyDetail.getTitle(), "1", System.currentTimeMillis() + "", str});
                         e.onComplete();
                     }
                 })
@@ -90,7 +90,7 @@ public class ZhihuDailyDetailPresenter implements ZhihuDailyDetailContract.Prese
             return;
         }
         SQLiteDatabase sqLiteDatabase = DatabaseHelper.getInstance().getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from favorite where (content_id == ? and type == 1)",new String[]{mDailyDetail.getId()+""});
+        sqLiteDatabase.execSQL("delete from like where (content_id == ? and type == 1)",new String[]{mDailyDetail.getId()+""});
         mView.setLikeState(false);
     }
 
@@ -100,7 +100,7 @@ public class ZhihuDailyDetailPresenter implements ZhihuDailyDetailContract.Prese
             return false;
         }
         SQLiteDatabase database = DatabaseHelper.getInstance().getReadableDatabase();
-        Cursor cursor = database.rawQuery("select * from favorite where content_id = ?", new String[]{mDailyDetail.getId() + ""});
+        Cursor cursor = database.rawQuery("select * from like where content_id = ?", new String[]{mDailyDetail.getId() + ""});
         boolean result = cursor.getCount() > 0;
         cursor.close();
         return result;

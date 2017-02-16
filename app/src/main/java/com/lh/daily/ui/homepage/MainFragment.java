@@ -17,8 +17,6 @@ import com.lh.daily.databinding.FragmentMainBinding;
 
 public class MainFragment extends BaseFragment<FragmentMainBinding> {
 
-    public static final String TAG = "MainFragment";
-
     private MainViewPagerAdapter mAdapter;
     private IDrawerActivity mDrawer;
 

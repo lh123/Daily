@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lh.daily.DailyApp;
+
 /**
  * Created by home on 2017/2/8.
  */
@@ -46,6 +48,12 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
             isDataLoaded = true;
             fetchData();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        DailyApp.getWatcher(getContext()).watch(this);
     }
 
     @LayoutRes

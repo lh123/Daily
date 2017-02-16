@@ -19,7 +19,6 @@ import com.lh.daily.mvp.presenter.ZhihuDailyDetailPresenter;
 
 public class ZhihuDailyDetailFragment extends BaseFragment<FragmentZhihuDailyDetailBinding> implements ZhihuDailyDetailContract.View {
 
-    public static final String TAG = "ZhihuDailyDetailFragment";
     private static final String EXTRA_ID = "id";
 
     private ZhihuDailyDetailContract.Presenter mPresenter;

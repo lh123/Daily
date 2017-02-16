@@ -8,6 +8,10 @@
     </style>
 
     <style name="AppTheme" parent="BaseTheme">
-        <item name="android:windowBackground">@color/windows_background</item>
+        <item name="android:windowBackground">@color/theme_color_view_background</item>
+    </style>
+
+    <style name="SearchTheme" parent="BaseTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>
